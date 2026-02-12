@@ -32,6 +32,7 @@
       border: none;
       font-weight: bold;
       border-radius: 5px;
+      cursor: pointer;
     }
     .about {
       padding: 60px 20px;
@@ -70,6 +71,7 @@
       height: auto;
       border-radius: 5px;
       margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
     .product-card h3 {
       margin: 10px 0 5px 0;
@@ -86,6 +88,11 @@
       margin-top: 10px;
       font-weight: bold;
       border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .product-card button:hover {
+      background-color: darkgoldenrod;
     }
     footer {
       padding: 40px 20px;
@@ -112,7 +119,7 @@
   <header>
     <h1>ANTECO'S</h1>
     <p>Handcrafted Luxury Footwear for Men</p>
-    <button>Explore Collection</button>
+    <button id="explore-btn">Explore Collection</button>
   </header>
 
   <section class="about">
@@ -129,24 +136,45 @@
     <h2>Our Collection</h2>
 
     <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Classic Oxford">
+      <img src="https://images.unsplash.com/photo-1612197522193-6f8a8d827ddf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Classic Oxford">
       <h3>Classic Oxford</h3>
       <p>₹7,999 – Handcrafted premium leather formal shoe.</p>
-      <button onclick="alert('Classic Oxford added to cart!')">Buy Now</button>
+      <button data-product="Classic Oxford">Buy Now</button>
     </div>
 
     <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Elegant Loafers">
+      <img src="https://images.unsplash.com/photo-1600185369562-c042f4cd1b90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Elegant Loafers">
       <h3>Elegant Loafers</h3>
       <p>₹6,499 – Comfortable casual leather loafers.</p>
-      <button onclick="alert('Elegant Loafers added to cart!')">Buy Now</button>
+      <button data-product="Elegant Loafers">Buy Now</button>
     </div>
 
     <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Premium Boots">
+      <img src="https://images.unsplash.com/photo-1615197763348-fb38e8f799d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Premium Boots">
       <h3>Premium Boots</h3>
       <p>₹9,999 – Handcrafted leather boots for men.</p>
-      <button onclick="alert('Premium Boots added to cart!')">Buy Now</button>
+      <button data-product="Premium Boots">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1600185369782-cf3d4234f2a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Derby Shoes">
+      <h3>Derby Shoes</h3>
+      <p>₹8,499 – Elegant formal derby shoes.</p>
+      <button data-product="Derby Shoes">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1618299862642-55c74cfd0520?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Chelsea Boots">
+      <h3>Chelsea Boots</h3>
+      <p>₹10,499 – Sleek leather boots for style and comfort.</p>
+      <button data-product="Chelsea Boots">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1618299859925-445fa4b748e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Casual Sneakers">
+      <h3>Casual Sneakers</h3>
+      <p>₹5,999 – Premium handcrafted casual sneakers.</p>
+      <button data-product="Casual Sneakers">Buy Now</button>
     </div>
 
   </section>
@@ -154,6 +182,21 @@
   <footer>
     &copy; 2026 Anteco's. All rights reserved.
   </footer>
+
+  <script>
+    // Explore Collection scroll
+    document.getElementById('explore-btn').addEventListener('click', () => {
+      document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Buy Now button alerts
+    const buttons = document.querySelectorAll('.product-card button[data-product]');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert(btn.dataset.product + ' added to cart!');
+      });
+    });
+  </script>
 
 </body>
 </html>
